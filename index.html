@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathura Yatra Cabs</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Baloo 2', sans-serif; background: #fff; color: #1a0a00; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 5%; background: #fff;
+    border-bottom: 2px solid #FFB800;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .logo { font-size: 1.3rem; font-weight: 800; color: #FF6B00; }
+  .logo span { color: #1a0a00; }
+  nav a {
+    background: #FF6B00; color: #fff;
+    padding: 10px 22px; border-radius: 8px;
+    text-decoration: none; font-weight: 700;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #FFF3E0, #FFF8EC);
+    padding: 60px 5% 50px;
+    text-align: center;
+    border-bottom: 3px solid #FFB800;
+  }
+  .hero-emoji { font-size: 3rem; margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 10px; }
+  .hero h1 span { color: #FF6B00; }
+  .hero p { color: #6B4C2A; font-size: 1rem; margin-bottom: 28px; }
+  .hero-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .btn-orange {
+    background: #FF6B00; color: #fff;
+    padding: 14px 30px; border-radius: 10px;
+    font-weight: 700; font-size: 1rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition:  0.2s;
+  }
+  .btn-orange:hover { background: #E05A00; }
+  .btn-outline {
+    background: #fff; color: #FF6B00;
+    padding: 14px 30px; border-radius: 10px;
+    font-weight: 700; font-size: 1rem;
+    border: 2px solid #FF6B00; cursor: pointer;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-outline:hover { background: #FFF3E0; }
+
+  /* BOOKING */
+  .booking { padding: 50px 5%; background: #fff; }
+  h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+  .sub { color: #8B6040; margin-bottom: 28px; font-size: 0.9rem; }
+  .form-card {
+    max-width: 700px;
+    background: #FFF8EC;
+    border: 2px solid #FFE0B2;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-grid .full { grid-column: 1 / -1; }
+  label { font-size: 0.8rem; font-weight: 700; color: #6B4C2A; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  input, select {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid #FFD0A0; border-radius: 8px;
+    font-family: 'Baloo 2', sans-serif; font-size: 0.95rem;
+    background: #fff; outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus { border-color: #FF6B00; }
+  .form-submit {
+    width: 100%; padding: 14px;
+    background: #FF6B00; color: #fff;
+    border: none; border-radius: 10px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800; font-size: 1.05rem;
+    cursor: pointer; transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .form-submit:hover { background: #E05A00; }
+
+  /* ROUTES */
+  .routes { padding: 50px 5%; background: #FFF8EC; }
+  .routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px; max-width: 1000px;
+  }
+  .route-card {
+    background: #fff; border-radius: 12px;
+    padding: 20px; border: 1.5px solid #FFE0B2;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .route-card:hover { border-color: #FF6B00; box-shadow: 0 4px 16px rgba(255,107,0,0.1); transform: scale(1.05); transition : 0.5s; }
+  .route-icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .route-name { font-weight: 800; margin-bottom: 4px; }
+  .route-desc { font-size: 0.82rem; color: #6B4C2A; margin-bottom: 12px; line-height: 1.5; }
+  .route-footer { display: flex; justify-content: space-between; align-items: center; }
+  .route-km { font-size: 0.75rem; color: #FF6B00; background: #FFF3E0; padding: 3px 10px; border-radius: 100px; }
+  .route-price { font-weight: 800; font-size: 1.05rem; }
+
+  /* WHY */
+  .why { padding: 50px 5%; background: #fff; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px; max-width: 800px;
+  }
+  .why-item { text-align: center; padding: 24px 16px; background: #FFF8EC; border-radius: 12px;  border-radius: 12px;
+    padding: 20px; border: 1.5px solid #FFE0B2;
+    transition: border-color 0.2s, box-shadow 0.2s; }
+  .why-icon { font-size: 2rem; margin-bottom: 8px; }
+  .why-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .why-desc { font-size: 0.78rem; color: #6B4C2A; line-height: 1.4; }
+  .why-item:hover { border-color: #FF6B00; box-shadow: 0 4px 16px rgba(255,107,0,0.1); transform: scale(1.01); transition : 0.5s; }
+
+
+  /* CONTACT */
+  .contact {
+    padding: 50px 5%; background: #FF6B00; text-align: center;
+  }
+  .contact h2 { color: #fff; }
+  .contact p { color: rgba(255,255,255,0.85); margin: 8px 0 24px; }
+  .contact-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .btn-white {
+    background: #fff; color: #FF6B00;
+    padding: 14px 30px; border-radius: 10px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-white:hover { background: #FFF3E0; }
+  .btn-dark {
+    background: #1a0a00; color: #FFB800;
+    padding: 14px 30px; border-radius: 10px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a0a00; color: #8B6040;
+    text-align: center; padding: 20px 5%;
+    font-size: 0.82rem;
+  }
+  footer span { color: #FFB800; font-weight: 700; }
+
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .form-grid .full { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🛺 Mathura <span>Yatra Cabs</span></div>
+  <a href="#contact">📞 Call Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-emoji">🛕</div>
+  <h1>Mathura's Most Trusted<br><span>Taxi Service</span></h1>
+  <p>Daily tourist rides to temples, ghats & nearby dhaams. Available 24/7.</p>
+  <div class="hero-btns">
+    <a href="#booking" class="btn-orange">Book a Ride</a>
+    <a href="tel:+910000000000" class="btn-outline">📞 +91 0000000000</a>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2>Book Your Ride</h2>
+  <p class="sub">Quick booking — confirmed in minutes</p>
+  <div class="form-card">
+    <div class="form-grid">
+      <div>
+        <label>Pickup</label>
+        <input type="text" placeholder="e.g. Railway Station">
+      </div>
+      <div>
+        <label>Destination</label>
+        <select>
+          <option>Vrindavan Temples</option>
+          <option>Krishna Janmabhoomi</option>
+          <option>Govardhan Parikrama</option>
+          <option>Barsana / Nandgaon</option>
+          <option>Vishram Ghat</option>
+          <option>Gokul </option>
+        </select>
+      </div>
+      <div>
+        <label>Date</label>
+        <input type="date" id="dateInput">
+      </div>
+      <div>
+        <label>Vehicle</label>
+        <select>
+          <option>Echo (3-5 pax)</option>
+          
+        </select>
+      </div>
+      <div class="full">
+        <label>Your Mobile</label>
+        <input type="tel" placeholder="+91 0000000000">
+      </div>
+      <div class="full">
+        <button class="form-submit" id="submitBtn">🪔 Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="routes" id="routes">
+  <h2>Popular Routes</h2>
+  <p class="sub">We cover all major sacred spots</p>
+  <div class="routes-grid">
+    <div class="route-card">
+      <div class="route-icon">🛕</div>
+      <div class="route-name">Mathura City Tour</div>
+      <div class="route-desc">Janmabhoomi, Dwarkadhish, 7 major temples in one tour.</div>
+      <div class="route-footer"><span class="route-km">~25 km · 4–5 hrs</span><span class="route-price">₹2000</span></div>
+    </div>
+    <div class="route-card">
+      <div class="route-icon">🌸</div>
+      <div class="route-name">Vrindavan Yatra</div>
+      <div class="route-desc">Banke Bihari, ISKCON, Prem Mandir and more.</div>
+      <div class="route-footer"><span class="route-km">~15 km · 3–4 hrs</span><span class="route-price">₹1600</span></div>
+    </div>
+    <div class="route-card">
+      <div class="route-icon">⛰️</div>
+      <div class="route-name">Govardhan Parikrama</div>
+      <div class="route-desc">Drop-off and pickup for 21 km sacred hill circuit.</div>
+      <div class="route-footer"><span class="route-km">~25 km · 5–6 hrs</span><span class="route-price">₹1900</span></div>
+    </div>
+    <div class="route-card">
+      <div class="route-icon">🏛️</div>
+      <div class="route-name">Mathura–Agra Day Trip</div>
+      <div class="route-desc">Darshan + Taj Mahal in one full-day AC cab trip.</div>
+      <div class="route-footer"><span class="route-km">~180 km · Full Day</span><span class="route-price">₹3,800</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <h2>Why Choose Us</h2>
+  <p class="sub">Your comfort, our commitment</p>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">🕐</div>
+      <div class="why-title">24/7 Available</div>
+      <div class="why-desc">Early aarti or midnight arrival — always ready</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Fixed Rates</div>
+      <div class="why-desc">No surge pricing, no hidden charges</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🛕</div>
+      <div class="why-title">Temple Experts</div>
+      <div class="why-desc">Drivers know every mandir & darshan timing</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">✨</div>
+      <div class="why-title">Clean Cabs</div>
+      <div class="why-desc">Sanitised before every trip</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Ready for Your Yatra?</h2>
+  <p>Call, WhatsApp or book online — we'll handle the rest.</p>
+  <div class="contact-btns">
+    <a href="tel:+919876543210" class="btn-white">📞 Call Us</a>
+    <a href="https://wa.me/919876543210" class="btn-dark">💬 WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <span>🛺 Mathura Yatra Cabs</span> · Mathura, Uttar Pradesh · Jai Shri Krishna 🙏
+</footer>
+
+<script>
+  document.getElementById('dateInput').value = new Date().toISOString().split('T')[0];
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    this.textContent = '✅ Booking Confirmed! Driver will call you shortly.';
+    this.style.background = '#2e7d32';
+    setTimeout(() => {
+      this.textContent = '🪔 Confirm Booking';
+      this.style.background = '';
+    }, 4000);
+  });
+</script>
+</body>
+</html>
